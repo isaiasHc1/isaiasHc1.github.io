@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Error 😒</title>
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+}
+
+.container {
+    animation: shake 0.5s infinite alternate;
+}
+
+@keyframes shake {
+    from { transform: translateX(-5px); }
+    to { transform: translateX(5px); }
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: rgb(205, 25, 136);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>ERROR ❌</h1>
+    <p>Esa no era la respuesta correcta 😒</p>
+    <p>Tienes que elegir que sí 😏❤️</p>
+    <p>Tu unica opción bb</p>
+
+    <button onclick="window.location.href='feliz.html'">
+        SIIII
+    </button>
+</div>
+
+</body>
+</html>

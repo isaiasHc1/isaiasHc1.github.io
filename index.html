@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.main-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* LADOS (IMÁGENES) */
+.side {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6);
+}
+
+.left {
+    background-image: url('img.jpg'); /* tu foto izquierda */
+}
+
+.right {
+    background-image: url('img.jpg'); /* tu foto derecha */
+}
+
+/* CHAT */
+.chat-container {
+    width: 400px;
+    height: 95vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background: #efeae2;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* HEADER */
+.header {
+    background: #075e54;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* CHAT INTERNO */
+.chat {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-image: url('img2.jpeg'); /* fondo del chat */
+    background-size: cover;
+    background-position: center;
+}
+
+/* MENSAJES */
+.message {
+    max-width: 75%;
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    animation: fadeIn 0.3s ease;
+}
+
+.sent {
+    background: #dcf8c6;
+    align-self: flex-end;
+}
+
+.received {
+    background: white;
+    align-self: flex-start;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ESCRIBIENDO */
+.typing {
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    margin: 5px;
+}
+
+/* BOTÓN */
+.button-container {
+    padding: 10px;
+    background: #f0f0f0;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: #25d366;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* RESPONSIVE (CELULAR) */
+@media (max-width: 768px) {
+    .side {
+        display: none;
+    }
+
+    .chat-container {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <div class="side left"></div>
+
+    <div class="chat-container">
+
+        <div class="header">
+            <img src="https://i.imgur.com/6VBx3io.png">
+            <div>
+                <div>Mi niña ❤️ Mi vidaa Te Amo ❤️</div>
+                <small>En línea</small>
+            </div>
+        </div>
+
+        <div class="chat" id="chat"></div>
+
+        <div class="button-container" id="buttonContainer" style="display:none;">
+    <button onclick="irSi()">Sí 💖</button>
+    <button onclick="irNo()">No 😒</button>
+         </div>
+
+    </div>
+
+    <div class="side right"></div>
+
+</div>
+
+<script>
+const messages = [
+    "Oye Amor...",
+    "¿Estás ocupada?",
+    "Bueno… aunque no respondas, necesito decirte algo",
+    "Estaba pensando en ti 🥺",
+    "Y no pude evitar sonreír🥰…",
+    "Y pues Amor",
+    "Hoy cumplimos 1 año y 5 meses Maass❤️",
+    "Y la verdad… no sé cómo explicarte todo lo que siento 🥺",
+    "Llegaste a mi vida y cambiaste todo",
+    "Me haces feliz de una forma que nadie más puede💞",
+    "Y aunque a veces no soy perfecto...",
+    "Te prometo que voy a ser mejor por ti😘",
+    "Y sí…",
+    "Te extraño incluso cuando acabo de verte",
+    "Incluso en este mismo instante te estoy extrañando Amor 🥺",
+    "Y si pudiera elegir otra vez😍...",
+    "Te elegiría a ti, una y mil veces más 💖",
+    "No sé en qué momento te volviste tan importante para mí ❤️",
+    "Pero ahora eres parte de todo lo que pienso 💭",
+    "Y de todo lo que quiero 🫶",
+    "Gracias por este tiempo juntos, mi niña ❤️",
+    "Y quiero seguir contigo mucho más 😘 😍 🫶...",
+    "Y tu quieres seguir a mi lado? 🥺"
+];
+
+let chat = document.getElementById("chat");
+let i = 0;
+
+function showMessage() {
+    if (i < messages.length) {
+
+        let typing = document.createElement("div");
+        typing.className = "typing";
+        typing.innerText = "Escribiendo...";
+        chat.appendChild(typing);
+
+        setTimeout(() => {
+            typing.remove();
+
+            let msg = document.createElement("div");
+            msg.className = "message sent";
+            msg.innerText = messages[i];
+
+            chat.appendChild(msg);
+            chat.scrollTop = chat.scrollHeight;
+
+            i++;
+            setTimeout(showMessage, 1500);
+        }, 1200);
+
+    } else {
+        document.getElementById("buttonContainer").style.display = "block";
+    }
+}
+
+function finalMessage() {
+    let msg = document.createElement("div");
+    msg.className = "message received";
+    msg.innerText = "Sabía que también me elegirías 😏❤️";
+
+    chat.appendChild(msg);
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function irSi() {
+    window.location.href = "feliz.html";
+}
+
+function irNo() {
+    window.location.href = "error.html";
+}
+showMessage();
+</script>
+
+</body>
+</html>
